@@ -160,7 +160,7 @@ public class StepDefinitions {
         return request;
     }
 
-    @Then("my new AuthorizedUser can access to the products list with USER token")
+    @Then("my new AuthorizedUser can access to the players list with USER token")
     public void canAccessToProducts() throws URISyntaxException, IOException {
         HttpUriRequest request = createGetRequest(productsURL, userJwtToken);
         HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
@@ -168,7 +168,7 @@ public class StepDefinitions {
         Assert.assertTrue(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK);
     }
 
-    @Then("my new AuthorizedUser can not access to the products list without USER token")
+    @Then("my new AuthorizedUser can not access to the players list without USER token")
     public void cannotAccessToProducts() throws URISyntaxException, IOException {
         HttpUriRequest request = createGetRequest(productsURL, null);
         HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);

@@ -76,9 +76,9 @@ public class PlayerController {
         return ResponseEntity.ok("Les " + products.size() + " produits ont bien été créés");
     }*/
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Player> patch(@PathVariable Long id, @Valid @RequestBody Player pDetails, Errors errors) {
+    public ResponseEntity<Player> put(@PathVariable Long id, @Valid @RequestBody Player pDetails, Errors errors) {
         if (errors.hasErrors()) {
             return new ResponseEntity(errors.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
@@ -93,6 +93,7 @@ public class PlayerController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<String> delete(@PathVariable Long id) {
+
         Player p = playerRepo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found for the id : " + id));
 
